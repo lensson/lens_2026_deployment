@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  lens-nginx:
+#    image: lensson/ohttps_nginx
+    image: lensson/lens-infra-nginx:latest
+#    image: ohttps/ohttps-nginx
+    container_name: lens-infra-nginx
+    restart: unless-stopped
+    command: [nginx-debug, '-g', 'daemon off;']
+    volumes:
+      - ./conf/conf.d:/etc/nginx/conf.d
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf
+      - ~/containers/lens-infra-nginx/logs:/var/log/nginx
+    environment:
+      DOMAIN_NAME: chentown.cn
+#      PUSH_NODE_ID: push-jkmvn8zx6prg5dz4
+#      PUSH_NODE_TOKEN: cf61962a844e75bf31c1097fa8423fb1
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.80
+
+networks:
+  solution_backnet:
+    external: true

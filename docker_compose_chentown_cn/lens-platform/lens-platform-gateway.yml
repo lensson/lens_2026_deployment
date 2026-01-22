@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  lens-platform-gateway:
+    container_name: lens-platform-gateway
+    image: lensson/lens-platform-gateway:latest
+    restart: unless-stopped
+    ports:
+      - 8800:8800
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.40
+    environment:
+      nacos: lens-nacos
+      redis: lens-redis
+networks:
+  solution_backnet:
+    external: true

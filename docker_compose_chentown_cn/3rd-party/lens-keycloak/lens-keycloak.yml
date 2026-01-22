@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  lens-keycloak:
+    container_name: lens-keycloak
+    image: quay.io/keycloak/keycloak:25.0.0
+    command:
+      - start-dev
+      - --import-realm
+    ports:
+      - "28080:8080"
+    env_file:
+      - config/lens-keycloak.env
+    volumes:
+      - ./import/:/opt/keycloak/data/import/
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.25
+    restart: unless-stopped
+networks:
+  solution_backnet:
+    external: true

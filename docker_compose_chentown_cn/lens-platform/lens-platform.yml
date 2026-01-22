@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  lens-platform-gateway:
+    container_name: lens-platform-gateway
+    image: lensson/lens-platform-gateway:latest
+    restart: unless-stopped
+    ports:
+      - 8840:8840
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.40
+    environment:
+      nacos: lens-nacos
+      redis: lens-redis
+  lens-platform-auth:
+    container_name: lens-platform-auth
+    image: lensson/lens-platform-auth:latest
+    restart: unless-stopped
+    ports:
+      - 8841:8841
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.41
+    environment:
+      nacos: lens-nacos
+      redis: lens-redis
+networks:
+  solution_backnet:
+    external: true

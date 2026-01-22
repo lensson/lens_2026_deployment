@@ -1,0 +1,23 @@
+# Use root/example as user/password credentials
+version: '3.5'
+services:
+  lens-nacos:
+    image: nacos/nacos-server:v3.0.0
+    container_name: lens-nacos
+    restart: unless-stopped
+    env_file:
+      - conf/lens-nacos.env
+    volumes:
+      - ./conf/nacos-logback.xml:/home/nacos/conf/nacos-logback.xml
+      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ~/containers/lens-nacos/logs:/home/nacos/logs
+    ports:
+      - "8849:8080"
+      - "8848:8848"
+      - "9848:9848"
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.21
+networks:
+  solution_backnet:
+    external: true

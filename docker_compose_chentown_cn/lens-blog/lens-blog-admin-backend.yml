@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  lens-blog-admin-backend:
+    container_name: lens-blog-admin-backend
+    image: lensson/lens-blog-admin-backend:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-admin-backend/logs:/root/containers/logs/lens-blog-admin-backend
+    ports:
+      - 9002:9002
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.102
+networks:
+  solution_backnet:
+    external: true

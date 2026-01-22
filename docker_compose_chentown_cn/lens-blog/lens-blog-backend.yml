@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  lens-blog-backend:
+    container_name: lens-blog-backend
+    image: lensson/lens-blog-backend:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-backend/logs:/root/containers/logs/lens-blog-backend
+    ports:
+      - 9001:9001
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.101
+networks:
+  solution_backnet:
+    external: true 

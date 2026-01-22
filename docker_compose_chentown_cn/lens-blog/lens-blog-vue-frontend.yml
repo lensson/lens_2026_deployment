@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  lens-blog-vue-frontend:
+    container_name: lens-blog-vue-frontend
+    image: lensson/lens-blog-vue-frontend:latest
+    command: [nginx-debug, '-g', 'daemon off;']
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    ports:
+      - 8001:80
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.181
+networks:
+  solution_backnet:
+    external: true

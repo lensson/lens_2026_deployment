@@ -1,0 +1,1 @@
+docker-compose -f lens-rabbitmq.yml down

@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  lens-blog-picture:
+    container_name: lens-blog-picture
+    image: lensson/lens-blog-picture:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-picture/logs:/root/containers/logs/lens-blog-picture
+    ports:
+      - 9012:9012
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.112
+networks:
+  solution_backnet:
+    external: true

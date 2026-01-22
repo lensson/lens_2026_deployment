@@ -1,0 +1,16 @@
+version: "3.1"
+services:
+  lens-zipkin:
+    image: openzipkin/zipkin:2.4.4
+    container_name: lens-zipkin
+    env_file:
+      - lens-zipkin.env
+    ports:
+      - 9411:9411
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.22
+    restart: unless-stopped
+networks:
+  solution_backnet:
+    external: true

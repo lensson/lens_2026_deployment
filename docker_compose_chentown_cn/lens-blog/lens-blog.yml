@@ -1,0 +1,87 @@
+version: '3.5'
+
+services:
+  lens-blog-monitor:
+    container_name: lens-blog-monitor
+    image: lensson/lens-blog-monitor:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-monitor/logs:/root/containers/logs/lens-blog-monitor
+    ports:
+      - 9020:9020
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.120
+
+  lens-blog-picture:
+    container_name: lens-blog-picture
+    image: lensson/lens-blog-picture:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-picture/logs:/root/containers/logs/lens-blog-picture
+    ports:
+      - 9012:9012
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.112
+
+  lens-blog-admin-backend:
+    container_name: lens-blog-admin-backend
+    image: lensson/lens-blog-admin-backend:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-admin-backend/logs:/root/containers/logs/lens-blog-admin-backend
+    ports:
+      - 9002:9002
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.102
+
+  lens-blog-backend:
+    container_name: lens-blog-backend
+    image: lensson/lens-blog-backend:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-backend/logs:/root/containers/logs/lens-blog-backend
+    ports:
+      - 9001:9001
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.101
+
+  lens-blog-admin-vue-frontend:
+    container_name: lens-blog-admin-vue-frontend
+    image: lensson/lens-blog-admin-vue-frontend:latest
+    command: [nginx-debug, '-g', 'daemon off;']
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    ports:
+      - 8002:80
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.182
+
+  lens-blog-vue-frontend:
+    container_name: lens-blog-vue-frontend
+    image: lensson/lens-blog-vue-frontend:latest
+    command: [nginx-debug, '-g', 'daemon off;']
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    ports:
+      - 8001:80
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.181
+networks:
+  solution_backnet:
+    external: true

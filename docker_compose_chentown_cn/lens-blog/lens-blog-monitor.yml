@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  lens-blog-monitor:
+    container_name: lens-blog-monitor
+    image: lensson/lens-blog-monitor:latest
+    restart: unless-stopped
+    env_file:
+      - ../env/solution.env
+    volumes:
+      - ~/containers/lens-blog-monitor/logs:/root/containers/logs/lens-blog-monitor
+    ports:
+      - 9020:9020
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.120
+networks:
+  solution_backnet:
+    external: true 

@@ -1,0 +1,28 @@
+# Use root/example as user/password credentials
+version: '3.5'
+services:
+  lens-prometheus:
+    container_name: lens-prometheus
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus-standalone.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - lens-nacos
+    restart: on-failure
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.26
+  lens-grafana:
+    container_name: lens-grafana
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    restart: on-failure
+    networks:
+      solution_backnet:
+        ipv4_address:  172.28.0.27
+networks:
+  solution_backnet:
+    external: true
