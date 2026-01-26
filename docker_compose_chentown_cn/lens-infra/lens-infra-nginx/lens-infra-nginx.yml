@@ -14,8 +14,8 @@ services:
       - ~/containers/lens-infra-nginx/logs:/var/log/nginx
     environment:
       DOMAIN_NAME: chentown.cn
-#      PUSH_NODE_ID: push-jkmvn8zx6prg5dz4
-#      PUSH_NODE_TOKEN: cf61962a844e75bf31c1097fa8423fb1
+      PUSH_NODE_ID: push-xlpm40gv3jq05n9g
+      PUSH_NODE_TOKEN: 81f6a759f4dce1e972055696416dec9e
     ports:
       - 80:80
       - 443:443
