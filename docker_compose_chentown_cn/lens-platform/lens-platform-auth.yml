@@ -3,10 +3,10 @@ version: '3.5'
 services:
   lens-platform-auth:
     container_name: lens-platform-auth
-    image: lensson/lens-platform-auth:latest
+    image: lensson/lens-platform-auth:1.0.0-SNAPSHOT
     restart: unless-stopped
     ports:
-      - 8841:8841
+      - 8041:8041
     networks:
       solution_backnet:
         ipv4_address:  172.28.0.41

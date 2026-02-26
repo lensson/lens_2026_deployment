@@ -6,10 +6,10 @@ services:
     image: lensson/lens-platform-gateway:latest
     restart: unless-stopped
     ports:
-      - 8840:8840
+      - 8050:8050
     networks:
       solution_backnet:
-        ipv4_address:  172.28.0.40
+        ipv4_address:  172.28.0.50
     environment:
       nacos: lens-nacos
       redis: lens-redis
@@ -18,7 +18,7 @@ services:
     image: lensson/lens-platform-auth:latest
     restart: unless-stopped
     ports:
-      - 8841:8841
+      - 8041:8041
     networks:
       solution_backnet:
         ipv4_address:  172.28.0.41

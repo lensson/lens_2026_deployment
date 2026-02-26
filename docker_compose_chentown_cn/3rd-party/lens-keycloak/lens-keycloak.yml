@@ -12,6 +12,7 @@ services:
       - config/lens-keycloak.env
     volumes:
       - ./import/:/opt/keycloak/data/import/
+      - ~/containers/lens-keycloak/logs:/opt/keycloak/data/log
     networks:
       solution_backnet:
         ipv4_address:  172.28.0.25

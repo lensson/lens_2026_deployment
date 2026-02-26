@@ -3,7 +3,7 @@ version: '3.1'
 services:
   lens-nginx:
 #    image: lensson/ohttps_nginx
-    image: lensson/lens-infra-nginx:latest
+    image: lensson/lens-infra-nginx:2.0.0-SNAPSHOT
 #    image: ohttps/ohttps-nginx
     container_name: lens-infra-nginx
     restart: unless-stopped

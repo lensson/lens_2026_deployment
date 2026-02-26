@@ -11,7 +11,9 @@
 | lens-redis             | 172.28.0.13  | 6379 | 6379  |                   |
 | **---- Infra ----**    |              |      |       |                   |
 | lens-infra-nginx       | 172.28.0.80  | 80   | 80    |                   |
-| lens-nacos             | 172.28.0.21  |    8848  |   8848    | nacos.chentown.cn |
+| lens-nacos             | 172.28.0.21  | 8848 | 8848  | nacos.chentown.cn |
+|                        |              | 8849 | 8849  |                   |
+|                        |              | 9848 | 9848  |                   |
 | lens-zipkin            |              |      |       |                   |
 | lens-rabbitmq          |              |      |       |                   |
 | lens-sentinel          |              |      |       |                   |

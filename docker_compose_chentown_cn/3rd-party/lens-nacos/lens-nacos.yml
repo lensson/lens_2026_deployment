@@ -2,7 +2,7 @@
 version: '3.5'
 services:
   lens-nacos:
-    image: nacos/nacos-server:v3.0.0
+    image: nacos/nacos-server:v3.1.0
     container_name: lens-nacos
     restart: unless-stopped
     env_file:
@@ -12,7 +12,7 @@ services:
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
       - ~/containers/lens-nacos/logs:/home/nacos/logs
     ports:
-      - "8849:8080"
+      - "8880:8080"
       - "8848:8848"
       - "9848:9848"
     networks:
